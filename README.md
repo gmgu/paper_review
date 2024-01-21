@@ -11,11 +11,18 @@ This repository maintains brief summary of my readings. Most of them are papers,
     - Text transformation with hypernymization: noun modifiers of certain types (proper nouns, number, units) are removed; dates, durations, and preposition-based locations (e.g., "in Los Angeles") are removed; named-entities are identified, matched against the KG entries, and substitute with their hypernym; resulting coordination noun-phrases with the same head (e.g., "actor and actor") are resolved into a single-head, pluralized form (e.g., "actors"). Too short or inconsistent samples are discarded after transformation. Cluster all resolved entities (e.g., "actor", "dog", "neighborhood") and keep only candidates for which all detected types have a count of over 100.
 
 
-- Jia et al., "scaling Up Visual and Vision-Language Representation Learning with Noisy Text Supervision", ICML 2021.
+- Jia et al., "Scaling Up Visual and Vision-Language Representation Learning with Noisy Text Supervision", ICML 2021.
   - Presented a nosiy dataset of 1.8B <image, alt-text> pairs, obtained without expensive filtering or post-processing steps in Conceptual Captions.
   - Apply simple frequency-based filtering.
     - Image-based filtering: remove pornographic images and keep only images whose shorter dimension is larger than 200 pixels and aspect ratio is smaller than 3. Images with more than 1000 associated alt-texts are discarded. Remove test images in ILSVRC-2012, Filckr30K, and MSCOCO.
     - Text-based filtering: exclude alt-texts that are shared by more than 10 images. Discard alt-texts that contain any rare token (outside of 100M most frequent unigrams and bigrams from the raw dataset), and those that are either too short (<3 unigrams) or too long (>20 unigrams).
+  - Trained an embedding model called ALIGN (A Large-scale ImaGe and Noisy-text embedding).
+
+- Radfoard and Kim et at., "Learning Transferable Visual Models from Natural Language Supervision", PMLR 2021.
+  - Created a new dataset of 400M <image, text> pairs, called WIT (WebImageText).
+    - Search for pairs whose text includes one of a set of 500,000 queries. The base query list is all words occurring at least 100 times in the English version of Wikipedia. Then, the query is augmented with bi-grams with high pointwise mutual information as well as the names of all Wikipedia articles above a certain search volume. Finally all WordNet synsets not already in the query list are added.
+    - Approximately class balance the results by including up to 20,000 pairs per query.
+  - Trained a model called CLIP (Constrastive Language-Image Pre-training).
 
 ## Articles
 
