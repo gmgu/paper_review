@@ -19,6 +19,15 @@ This repository maintains brief summary of my readings. Most of them are papers,
   - The idea is reducing the SSM to the computation of a Cauchy kernel by conditioning $A$ with a low-rank correction. (I did not look into the method.)
   - The resulting model architecture is called Structured State Space Sequence (S4) layer.
   - In short, S4 is a training-efficient version of LSSL.
+
+
+#### H3
+- Fu and Dao et al., "Hungry Hungry Hippos: Towards Language Modeling with State Space Models
+  - This paper proposes a state space model (SSM) that can perform well on natural language understanding tasks.
+  - The key idea is to add "copy" and "compare" functions to SSM. These two function is already provided by the attention operation, i.e., $QK^{-1}V}$, where $QK^{-1}$ computes the similarity between $Q$ and $K$ (and thus comparing all pairwise tokens), and multiplying $V$ is a kind of copying.
+  - The authors propose Hungry Hungry Hippos (H3) layer, which is two SSMs, one having shifted diagonal matrix $A$ (seems like it represents the previous state), another hvaing diagonal matrix $A$ (seems like it is used for pairwise comparison). Three projections $Q, K, V$ of input $x$ is fed into two SSMs.
+  - The paper empirically shows that H3 outperforms S4, and performs as good as attention models.
+  - This is the first work that adapted SSM to natural language tasks.
  
 
 ### Multimodal (text, image) Model and Data
