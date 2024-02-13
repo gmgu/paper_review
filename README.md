@@ -30,6 +30,13 @@ This repository maintains brief summary of my readings. Most of them are papers,
   - The paper empirically shows that H3 outperforms S4, and that H3 performs as good as attention models.
   - This is the first work that well adapted SSM to natural language tasks.
  
+#### Mamba
+- Gu and Dao, "Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+  - This paper proposes a Selective State Space model, called Mamba, which has a structure combining H3 and gated MLP.
+  - The idea is to add a model functionality of selective copying. This leads the model to work better for long seqeunces than other models inclusing H3 and Transformers.
+  - Somehow, Mamba has lower perplexity than Transformers of the same size. At the same time, it has better latency and throughput. Mamba uses slightly more memory than Transformers with FlashAttention, where both FlashAttention and Mamba uses linear space.
+  - Mamba will be the next Transformers.
+ 
 
 ### Multimodal (text, image) Model and Data
 
