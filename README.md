@@ -3,17 +3,27 @@ This repository maintains brief summary of my readings. Most of them are papers,
 ## Papers
 
 ### State Space Model
+
+#### LSSL
 - Gu et al., "Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers
   - Introduced the Linear State-Space Layer (LSSL) that maps a sequence $u$ to $y$, where $u$ is a continous data. (e.g., audio data)
   - LSSL can be adapted to descrete data $u$ by chunking the data with size $\Delta t$. (e.g., text data)
   - LSSL computes $\dot x = Ax + Bu$ and $y = Cx + Du$, where $x$ represents the previous state, $\dot x$ represents the current state, and $A, B, C, D$ are learnable parameters. (Be careful that $x$ in $y$ is equal to $\dot x$. I have no idea why the authors use different notation.) It updates the current state which is a weighted sum of previous state and current input. It outputs the prediction which is a weighted sum of current state and current input. The term $Du$ is for residual connection, so it can be omitted for simplicity.
   - LSSL can be used just like RNN when inference, while it can be efficiently trained in parallel.
   - The parallelization is done by the convolution (sum of multiplications): $y = [CB, CAB, CA^2B, \dots, CA^{N-1}B] * u$. However, the naive computation of the convolution takes $O(N^2L)$ time. A theoretically efficient algorithm can compute it in quasi-linear time and space $\tilde O(N+L)$ (but not implemented).
-  - In summary, LSSL is an interesting model that can be trained in parallel and that can conduct inference just like RNN. This resolves the inefficient training problem of RNN. At the same time, LSSL provides efficient inference in terms of both time and memory.
+  - In summary, LSSL is an interesting model that can be trained in parallel and that can conduct inference just like RNN. This resolves the inefficient training problem of RNN. At the same time, LSSL provides efficient inference in terms of both time and memory just like RNN.
 
-
+#### S4
+- Gu, Goel, and Re, "Efficiently Modeling Long Sequences with Structured State Spaces
+  - Proposed effficient implementation of LSSL, where the convolution can be computed in $\tilde O(N+L)$ time using $O(N+L)$ space.
+  - The idea is reducing the SSM to the computation of a Cauchy kernel by conditioning $A$ with a low-rank correction. (I did not look into the method.)
+  - The resulting model architecture is called Structured State Space Sequence (S4) layer.
+  - In short, S4 is a training-efficient version of LSSL.
+ 
 
 ### Multimodal (text, image) Model and Data
+
+#### Conceptual Captions
 - Sharma et al., "Conceptual Captions, A Cleaned, Hypernymed, Image Alt-text Dataset for Automatic Image Captionning", ACL 2018.
   - Presented a dataset of image caption annotations, called Conceptual Captions, which consists of 3.3M <image, description> pairs.
   - Used a Flume pipeline to extract, filter, and processes candidate <image, caption> pairs.
@@ -22,7 +32,7 @@ This repository maintains brief summary of my readings. Most of them are papers,
     - Image&Text-based filtering: filter out candidates for which none of the text tokens can be mapped to the content of the image.
     - Text transformation with hypernymization: noun modifiers of certain types (proper nouns, number, units) are removed; dates, durations, and preposition-based locations (e.g., "in Los Angeles") are removed; named-entities are identified, matched against the KG entries, and substitute with their hypernym; resulting coordination noun-phrases with the same head (e.g., "actor and actor") are resolved into a single-head, pluralized form (e.g., "actors"). Too short or inconsistent samples are discarded after transformation. Cluster all resolved entities (e.g., "actor", "dog", "neighborhood") and keep only candidates for which all detected types have a count of over 100.
 
-
+#### ALIGN
 - Jia et al., "Scaling Up Visual and Vision-Language Representation Learning with Noisy Text Supervision", ICML 2021.
   - Presented a nosiy dataset of 1.8B <image, alt-text> pairs, obtained without expensive filtering or post-processing steps in Conceptual Captions.
   - Apply simple frequency-based filtering.
@@ -30,6 +40,7 @@ This repository maintains brief summary of my readings. Most of them are papers,
     - Text-based filtering: exclude alt-texts that are shared by more than 10 images. Discard alt-texts that contain any rare token (outside of 100M most frequent unigrams and bigrams from the raw dataset), and those that are either too short (<3 unigrams) or too long (>20 unigrams).
   - Trained an embedding model called ALIGN (A Large-scale ImaGe and Noisy-text embedding).
 
+#### CLIP
 - Radfoard and Kim et at., "Learning Transferable Visual Models from Natural Language Supervision", PMLR 2021.
   - Created a new dataset of 400M <image, text> pairs, called WIT (WebImageText).
     - Search for pairs whose text includes one of a set of 500,000 queries. The base query list is all words occurring at least 100 times in the English version of Wikipedia. Then, the query is augmented with bi-grams with high pointwise mutual information as well as the names of all Wikipedia articles above a certain search volume. Finally all WordNet synsets not already in the query list are added.
