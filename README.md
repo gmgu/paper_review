@@ -33,8 +33,8 @@ This repository maintains brief summary of my readings. Most of them are papers,
 #### Mamba
 - Gu and Dao, "Mamba: Linear-Time Sequence Modeling with Selective State Spaces
   - This paper proposes a Selective State Space model, called Mamba, which has a structure combining H3 and gated MLP.
-  - The idea is to add a model functionality of selective copying. This leads the model to work better for long seqeunces than other models inclusing H3 and Transformers.
-  - Somehow, Mamba has lower perplexity than Transformers of the same size. At the same time, it has better latency and throughput. Mamba uses slightly more memory than Transformers with FlashAttention, where both FlashAttention and Mamba uses linear space.
+  - The idea is to add a model the functionality of selective copying. This leads the model to perform better for long seqeunces than other models inclusing H3 and Transformers.
+  - Somehow, Mamba has lower perplexity than Transformers of the same size. Also, it has a lower latency and a higher throughput. Mamba uses slightly more memory than Transformers with FlashAttention, where both FlashAttention and Mamba use linear space.
   - Mamba will be the next Transformers.
  
 
