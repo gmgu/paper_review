@@ -2,6 +2,18 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### State Space Model
+- Gu et al., "Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers
+  - Introduced the Linear State-Space Layer (LSSL) that maps a sequence $u$ to $y$, where $u$ is a continous data. (e.g., audio data)
+  - LSSL can be adapted to descrete data $u$ by chunking the data with size $\Delta t$. (e.g., text data)
+  - LSSL computes $\dot x = Ax + Bu$ and $y = Cx + Du$, where $x$ represents the previous state, $\dot x$ represents the current state, and $A, B, C, D$ are learnable parameters. (Be careful that $x$ in $y$ is equal to $\dot x$. I have no idea why the authors use different notation.) It updates the current state which is a weighted sum of previous state and current input. It outputs the prediction which is a weighted sum of current state and current input. The term $Du$ is for residual connection, so it can be omitted for simplicity.
+  - LSSL can be used just like RNN when inference, while it can be efficiently trained in parallel.
+  - The parallelization is done by the convolution (sum of multiplications): $y = [CB, CAB, CA^2B, \dots, CA^{N-1}B] * u$. However, the naive computation of the convolution takes $O(N^2L)$ time. A theoretically efficient algorithm can compute it in quasi-linear time and space $\tilde O(N+L)$ (but not implemented).
+  - In summary, LSSL is an interesting model that can be trained in parallel and that can conduct inference just like RNN. This resolves the inefficient training problem of RNN. At the same time, LSSL provides efficient inference in terms of both time and memory.
+
+
+
+### Multimodal (text, image) Model and Data
 - Sharma et al., "Conceptual Captions, A Cleaned, Hypernymed, Image Alt-text Dataset for Automatic Image Captionning", ACL 2018.
   - Presented a dataset of image caption annotations, called Conceptual Captions, which consists of 3.3M <image, description> pairs.
   - Used a Flume pipeline to extract, filter, and processes candidate <image, caption> pairs.
