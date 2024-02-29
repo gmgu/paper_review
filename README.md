@@ -2,6 +2,12 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### Video Generation
+
+#### Sora
+- Liu et al., "Sora: A Review on Background, Technology, Limitations, and Opportunities of Large Vision Models"
+  - https://arxiv.org/pdf/2402.17177.pdf
+
 ### Large Language Model Objective
 
 #### Learning Law
