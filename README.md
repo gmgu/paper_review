@@ -2,6 +2,11 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### Large Language Model Objective
+
+#### Learning Law
+- Gu et al., "Towards Optimal Learning of Language Models"
+
 ### State Space Model
 
 #### LSSL
