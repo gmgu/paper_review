@@ -47,6 +47,19 @@ This repository maintains brief summary of my readings. Most of them are papers,
 - Zhou et al., "SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures"
   - https://arxiv.org/pdf/2402.03620.pdf
 
+#### ReAct
+- Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models", ICLR 2023
+  - reasoning and acting based on prompt
+  - Write thoughts in natural language on top of actions
+
+#### Chain-of-Thought (CoT)
+- Wei et al., "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", NeurIPS 2022
+  - Series of intermediate reasoning steps
+  - few-show prompting in the form of <input, chain of thought, output>
+  - allows models to decompose multi-step problems into intermediate steps
+  - gives opportunities to debug the reasoning path
+  - improves performance on math problems
+
 ### Video Generation
 
 #### Sora
