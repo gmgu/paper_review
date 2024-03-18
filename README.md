@@ -2,6 +2,12 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### Planning and Reasoning
+
+#### Self-Discover
+- Zhou et al., "SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures"
+  - https://arxiv.org/pdf/2402.03620.pdf
+
 ### Video Generation
 
 #### Sora
