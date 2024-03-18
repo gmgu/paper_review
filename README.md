@@ -2,6 +2,45 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### LLM with API
+
+#### ToolLLM
+- Qin et al., "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs", ICLR 2024
+  - ToolBench: training dataset consisting of (instruction, APIs) pairs and (instruction, solution path) pairs, which covers single-tool and multi-tool scenarios
+  - ToolEval: automatic evaluation system utilizing ChatGPT
+  - DFSDT: solution path planning algorithm based on backtracking
+
+#### ToolAlpaca
+- Tang et al., "ToolAlpaca: Generalized Tool Learning for Language Models with 3000 Simulated Cases", 2023
+  - Automatically generate a diverse tool-use corpus: Toolset (documentation) construction and Tool-use instance (API usage example) generation
+
+#### API-Bank
+- Li et al., "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs", 2023
+  - Evaluation and Training system that covers planning, retrieving, and calling API tools
+
+#### Gorilla
+- Patil et al., "Gorilla: Large Language Model Connected with Massive APIs", 2023
+  - Challenges: selecting an incorrect library and filling wrong parameters
+  - APIBench: corpus of APIs collected from TorchHub, TensorHub, and HuggingFace
+    - (Instruction, reference API) pairs, where instruction is generated using Self-Instruct
+    - Self-Instruct: generate new instruction dataset from seed instruction dataset
+  - Evaluation
+    - AST accuracy: (generation's AST is a subtree of API dataset's AST).
+    - Hallucination: API call that is not a subtree of any API in the dataset.
+
+#### Toolformer
+- Schick et al., "Toolformer: Language Models Can Teach Themselves to Use Tools", 2023
+  - Use external tools such as Q&A system, calculator, translation, and search engine
+  - A part of sentence is replaced by the call of a tool with inputs
+
+#### ToolBench
+- Xu et al., "On the Tool Manipulation Capability of Open-source Large Language Models", 2023
+  - Observation: Wrong API name and arguments
+  - Challenges: API selection, filling arguments, non-executable code
+  - Instruction tuning: template with Task and API Calls
+  - Retrieval Augmented Generation: in-context demonstration of using APIs
+  - System Prompt: explicit guidelines in natural language to generate code
+
 ### Planning and Reasoning
 
 #### Self-Discover
