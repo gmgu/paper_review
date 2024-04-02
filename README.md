@@ -4,6 +4,17 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ### LLM with API
 
+#### Survey
+- Wang et al., "What Are Tools Anyway? A Survey from the Language Model Perspective"
+  - https://zorazrw.github.io/files/WhatAreToolsAnyway.pdf
+  - Definition of Tool: An LM-used tool is a function interface to a computer program that runs externally to the LM, where the LM generates the function calls and input arguments in order to use the tool.
+  - Categories of Tool: Perception (collect information from the environment), Action (exert actions on the environment and change its state), Computation (use programs to tackle complex computational tasks).
+  - Definition of Agent: anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators.
+
+#### FLAN
+- Chen et al., "Agent-FLAN: Designing Data and Methods of Effective Agent Tuning for Large Language Models"
+  - https://arxiv.org/pdf/2403.12881v1.pdf
+
 #### ToolLLM
 - Qin et al., "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs", ICLR 2024
   - ToolBench: training dataset consisting of (instruction, APIs) pairs and (instruction, solution path) pairs, which covers single-tool and multi-tool scenarios
@@ -42,6 +53,10 @@ This repository maintains brief summary of my readings. Most of them are papers,
   - System Prompt: explicit guidelines in natural language to generate code
 
 ### Planning and Reasoning
+
+#### RankPrompt
+- Hu et al., "RankPrompt: Step-by-Step Comparisons Make Language Models Better Reasoners"
+  - https://arxiv.org/pdf/2403.12373.pdf
 
 #### Self-Discover
 - Zhou et al., "SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures"
