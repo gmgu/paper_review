@@ -2,6 +2,12 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### Vision Language Model
+
+#### An Introduction to Vision-Language Modeling
+- Bordes et al., "An Introduction to Vision-Language Modeling"
+  - https://arxiv.org/pdf/2405.17247
+
 ### LLM with API
 
 #### Survey
