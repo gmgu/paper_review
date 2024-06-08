@@ -2,6 +2,20 @@ This repository maintains brief summary of my readings. Most of them are papers,
 
 ## Papers
 
+### Code
+
+#### Survey
+- Jiang et al., "A Survey on Large Language Models for Code Generation"
+  - https://arxiv.org/abs/2406.00515
+
+#### Memorization
+- Rabin et al., "Memorization and generalization in neural code intelligence models"
+  - https://arxiv.org/abs/2106.08704
+
+#### Natural and Programming Language Corpora
+- Casalnuovo, Sagae, and Devanbu, "Studying the Difference Between Natural and Programming Language Corpora
+  - https://arxiv.org/abs/1806.02437
+ 
 ### Vision Language Model
 
 #### An Introduction to Vision-Language Modeling
